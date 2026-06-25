@@ -1,23 +1,18 @@
 /* ===================================================================
    PARAY FC — Espace admin du week-end
    - Accès par mot de passe (côté client uniquement)
-   - Données enregistrées dans localStorage
-   Clés : pfc_program · pfc_results · pfc_news
+   - Données via Store (Supabase en ligne, repli localStorage)
    =================================================================== */
 (function () {
   'use strict';
 
   var PASSWORD = 'admin2026';
-  var K_PROG = 'pfc_program', K_RES = 'pfc_results', K_NEWS = 'pfc_news';
   var VENUES = ['Domicile', 'Extérieur'];
   var OUTCOMES = ['Victoire', 'Nul', 'Défaite', 'N/A'];
 
   function $(id) { return document.getElementById(id); }
-  function read(key) { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } }
-  function write(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
 
   document.addEventListener('DOMContentLoaded', function () {
-    /* Branding depuis config.js */
     if (typeof CONFIG !== 'undefined') {
       if (CONFIG.logoUrl) { $('login-logo').src = CONFIG.logoUrl; $('admin-logo').src = CONFIG.logoUrl; }
       if (CONFIG.clubName) $('admin-club').textContent = CONFIG.clubName;
@@ -49,15 +44,16 @@
   function showApp() {
     $('login').hidden = true;
     $('app').hidden = false;
-    bootData();
     wireActions();
+    bootData();
   }
 
   /* ---------- Toast ---------- */
   var toastTimer;
-  function toast(msg) {
+  function toast(msg, isError) {
     var t = $('toast');
     t.textContent = msg;
+    t.style.background = isError ? '#C0192C' : '';
     t.hidden = false;
     requestAnimationFrame(function () { t.classList.add('show'); });
     clearTimeout(toastTimer);
@@ -69,8 +65,7 @@
 
   /* ---------- Constructeurs de lignes (DOM, sans injection) ---------- */
   function makeSelect(options, val) {
-    var s = document.createElement('select');
-    s.className = 'in';
+    var s = document.createElement('select'); s.className = 'in';
     options.forEach(function (o) {
       var op = document.createElement('option');
       op.textContent = o;
@@ -80,9 +75,7 @@
     return s;
   }
   function makeInput(type, ph, val) {
-    var i = document.createElement('input');
-    i.className = 'in';
-    i.type = type;
+    var i = document.createElement('input'); i.className = 'in'; i.type = type;
     if (ph) i.placeholder = ph;
     if (val != null) i.value = val;
     return i;
@@ -98,9 +91,7 @@
     td.className = 'row-act';
     td.setAttribute('data-label', '');
     var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'del';
-    b.textContent = '✕';
+    b.type = 'button'; b.className = 'del'; b.textContent = '✕';
     b.setAttribute('aria-label', 'Supprimer la ligne');
     b.addEventListener('click', function () { tr.remove(); });
     td.appendChild(b);
@@ -148,51 +139,65 @@
 
   /* ---------- Chargement des données existantes ---------- */
   function bootData() {
-    var prog = read(K_PROG) || { weekend: '', matches: [] };
-    $('weekend-date').value = prog.weekend || '';
-    var pt = $('prog-rows'); pt.innerHTML = '';
-    (prog.matches || []).forEach(function (m) { pt.appendChild(progRow(m)); });
-    if (!pt.children.length) pt.appendChild(progRow());
+    $('prog-rows').innerHTML = '';
+    $('res-rows').innerHTML = '';
+    Store.getAll().then(function (all) {
+      var prog = all.program || { weekend: '', matches: [] };
+      $('weekend-date').value = prog.weekend || '';
+      (prog.matches || []).forEach(function (m) { $('prog-rows').appendChild(progRow(m)); });
+      if (!$('prog-rows').children.length) $('prog-rows').appendChild(progRow());
 
-    var res = read(K_RES) || { results: [] };
-    var rt = $('res-rows'); rt.innerHTML = '';
-    (res.results || []).forEach(function (m) { rt.appendChild(resRow(m)); });
-    if (!rt.children.length) rt.appendChild(resRow());
+      var res = all.results || { results: [] };
+      (res.results || []).forEach(function (m) { $('res-rows').appendChild(resRow(m)); });
+      if (!$('res-rows').children.length) $('res-rows').appendChild(resRow());
 
-    var news = read(K_NEWS);
-    if (news) {
-      $('news-title').value = news.title || '';
-      $('news-cat').value = news.category || 'Résultats';
-      $('news-text').value = news.text || '';
-    }
-    updateCount();
+      var news = all.news;
+      if (news) {
+        $('news-title').value = news.title || '';
+        $('news-cat').value = news.category || 'Résultats';
+        $('news-text').value = news.text || '';
+      }
+      updateCount();
+    }).catch(function () {
+      $('prog-rows').appendChild(progRow());
+      $('res-rows').appendChild(resRow());
+      toast('Lecture de la base impossible', true);
+    });
   }
 
   function updateCount() { $('news-count').textContent = ($('news-text').value || '').length; }
 
   /* ---------- Boutons ---------- */
+  function save(btn, key, data, okMsg) {
+    btn.disabled = true;
+    Store.set(key, data).then(function () {
+      toast(okMsg);
+    }).catch(function () {
+      toast("Erreur d'enregistrement", true);
+    }).then(function () {
+      btn.disabled = false;
+    });
+  }
+
   function wireActions() {
     $('prog-add').addEventListener('click', function () { $('prog-rows').appendChild(progRow()); });
     $('res-add').addEventListener('click', function () { $('res-rows').appendChild(resRow()); });
 
     $('prog-save').addEventListener('click', function () {
-      write(K_PROG, { weekend: $('weekend-date').value.trim(), matches: collectProg() });
-      toast('✓ Programme enregistré');
+      save(this, 'program', { weekend: $('weekend-date').value.trim(), matches: collectProg() }, '✓ Programme enregistré');
     });
     $('res-save').addEventListener('click', function () {
-      write(K_RES, { results: collectRes() });
-      toast('✓ Résultats enregistrés');
+      save(this, 'results', { results: collectRes() }, '✓ Résultats enregistrés');
     });
     $('news-save').addEventListener('click', function () {
       var title = $('news-title').value.trim();
-      if (!title) { toast('Ajoutez un titre'); return; }
-      write(K_NEWS, {
+      if (!title) { toast('Ajoutez un titre', true); return; }
+      save(this, 'news', {
         title: title,
         category: $('news-cat').value,
         text: $('news-text').value.trim(),
         date: new Date().toISOString()
-      });
-      toast('✓ Actualité publiée');
+      }, '✓ Actualité publiée');
     });
 
     $('news-text').addEventListener('input', updateCount);

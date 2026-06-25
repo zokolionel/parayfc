@@ -1,6 +1,6 @@
 /* ===================================================================
    PARAY FC — Affichage du week-end sur l'accueil
-   Lit localStorage (rempli par admin.html) et injecte :
+   Lit le Store (Supabase en ligne, repli localStorage) et injecte :
    - le programme du week-end (tableau)
    - les 3 derniers résultats
    - la dernière actualité publiée
@@ -8,41 +8,37 @@
 (function () {
   'use strict';
 
-  var K_PROG = 'pfc_program', K_RES = 'pfc_results', K_NEWS = 'pfc_news';
-
   var CAT_COLORS = {
-    'Résultats':   { bg: 'var(--secondary)',  fg: '#fff' },
-    'Événement':   { bg: 'var(--accent)',     fg: 'var(--primary)' },
-    'Recrutement': { bg: 'var(--navy-text)',  fg: '#fff' },
-    'Communiqué':  { bg: 'var(--navy-dark)',  fg: '#fff' }
+    'Résultats':   { bg: 'var(--secondary)', fg: '#fff' },
+    'Événement':   { bg: 'var(--accent)',    fg: 'var(--primary)' },
+    'Recrutement': { bg: 'var(--navy-text)', fg: '#fff' },
+    'Communiqué':  { bg: 'var(--navy-dark)', fg: '#fff' }
   };
   var OUT_CLASS = { 'Victoire': 'win', 'Nul': 'draw', 'Défaite': 'loss', 'N/A': 'na' };
 
-  function read(key) { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } }
   function esc(s) { var d = document.createElement('div'); d.textContent = (s == null ? '' : String(s)); return d.innerHTML; }
   function fmtTime(t) { return t ? String(t).replace(':', 'h') : ''; }
 
   document.addEventListener('DOMContentLoaded', function () {
-    renderWeekend();
-    renderLatestNews();
+    if (typeof Store === 'undefined') return;
+    Store.getAll().then(function (all) {
+      renderWeekend(all.program, all.results);
+      renderLatestNews(all.news);
+    }).catch(function () { /* base indisponible : on n'affiche rien */ });
   });
 
-  function renderWeekend() {
+  function renderWeekend(prog, res) {
     var section = document.getElementById('weekend');
     if (!section) return;
 
-    var prog = read(K_PROG);
-    var res = read(K_RES);
     var hasProg = prog && prog.matches && prog.matches.length;
     var hasRes = res && res.results && res.results.length;
-
     if (!hasProg && !hasRes) { section.hidden = true; return; }
     section.hidden = false;
 
     var dateEl = document.getElementById('weekend-date');
     if (dateEl) dateEl.textContent = (prog && prog.weekend) ? prog.weekend : '';
 
-    /* Programme */
     var pwrap = document.getElementById('program-wrap');
     var pempty = document.getElementById('program-empty');
     if (hasProg) {
@@ -67,7 +63,6 @@
       pempty.hidden = false;
     }
 
-    /* Résultats (3 derniers) */
     var rwrap = document.getElementById('results-wrap');
     var rempty = document.getElementById('results-empty');
     if (hasRes) {
@@ -90,11 +85,9 @@
     }
   }
 
-  function renderLatestNews() {
+  function renderLatestNews(n) {
     var grid = document.getElementById('news-grid');
-    if (!grid) return;
-    var n = read(K_NEWS);
-    if (!n || !n.title) return;
+    if (!grid || !n || !n.title) return;
 
     var c = CAT_COLORS[n.category] || { bg: 'var(--navy-text)', fg: '#fff' };
     var dateStr = '';

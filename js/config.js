@@ -14,10 +14,7 @@ const CONFIG = {
   city:        'Paray-Vieille-Poste',
   foundedYear: 1947,
 
-  /* ---------- Couleurs (pilotent les variables CSS du thème) ----------
-     primary   = navy   (fonds sombres, header, titres)
-     secondary = rouge  (boutons principaux, accents forts)
-     accent    = or     (détails, surlignages)                         */
+  /* ---------- Couleurs (pilotent les variables CSS du thème) ---------- */
   colors: {
     primary:   '#13224F',
     secondary: '#C0192C',
@@ -44,7 +41,7 @@ const CONFIG = {
   },
 
   /* ---------- Boutique ---------- */
-  shopUrl: 'boutique.html',  // ou l'URL externe de la boutique (Skita…)
+  shopUrl: 'boutique.html',
 
   /* ---------- Sportif ---------- */
   flagshipTeam: {
@@ -53,7 +50,14 @@ const CONFIG = {
   },
   memberCount: 524,
   teamCount:   31,
+
+  /* ---------- Base de données en ligne (Supabase) ----------
+     Pilote le partage du week-end (admin → site, visible par tous).
+     La clé "publishable" est publique par conception : aucun secret ici. */
+  backend: {
+    supabaseUrl: 'https://rdxavrviphxpnlaymoly.supabase.co',
+    supabaseKey: 'sb_publishable_R7apWN1oHpqH5Q36J1Fe0Q_tEPF_2E0',
+  },
 };
 
-/* Disponible aussi en global explicite (sécurité) */
 window.CONFIG = CONFIG;

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Actualités — Paray FC</title>
-  <meta name="description" content="Résultats, recrutement et événements : toute l'actualité du Paray Football Club.">
+  <meta name="description" content="Résultats, recrutement, événements et communiqués du Paray Football Club, avec galerie photos par événement.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -49,21 +49,130 @@
     </div>
   </header>
 
+  <!-- ============ EN-TÊTE ============ -->
   <section class="page-hero">
     <div class="page-hero__inner">
-      <span class="eyebrow">DERNIÈRES NOUVELLES</span>
+      <span class="breadcrumb"><a href="index.html">Accueil</a> <span class="sep">/</span> <span class="current">Actualités</span></span>
       <h1>Actualités</h1>
-      <p>Suivez les résultats des équipes, les détections, les événements et toute la vie du club au fil de la saison.</p>
+      <p>Résultats du week-end, infos recrutement, événements et communiqués officiels du club, au même endroit.</p>
     </div>
   </section>
 
-  <main class="page-body">
-    <div class="soon-card">
-      <h2>Page en cours de construction</h2>
-      <p>Le fil complet des actualités et le calendrier des matchs seront publiés ici très prochainement.</p>
-      <a href="index.html#actus" class="btn btn--primary">← Voir les dernières actus</a>
+  <!-- ============ FILTRES + ARTICLES ============ -->
+  <section class="section">
+    <div class="filters">
+      <button class="filter-btn is-active" data-filter="Tout" style="--c:#13224F;--fg:#fff;">Tout <span class="count">9</span></button>
+      <button class="filter-btn" data-filter="Résultats" style="--c:#C0192C;--fg:#fff;">Résultats <span class="count">3</span></button>
+      <button class="filter-btn" data-filter="Recrutement" style="--c:#1B2F6E;--fg:#fff;">Recrutement <span class="count">2</span></button>
+      <button class="filter-btn" data-filter="Événements" style="--c:#F2B705;--fg:#13224F;">Événements <span class="count">2</span></button>
+      <button class="filter-btn" data-filter="Communiqués" style="--c:#0E1A3C;--fg:#fff;">Communiqués <span class="count">2</span></button>
     </div>
-  </main>
+
+    <div class="news-grid">
+      <a href="#" class="news-card" data-cat="Résultats">
+        <div class="news-card__media"><div class="img-placeholder">Photo match R2</div><span class="news-card__cat" style="background:#C0192C;color:#fff;">RÉSULTATS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">22 juin 2026</span>
+          <h3 class="news-card__title">La R2 s'impose 3-1 face à Brétigny</h3>
+          <p class="news-card__excerpt">Portée par un doublé de Mehdi Saïdi, l'équipe fanion enchaîne une troisième victoire et reste accrochée au haut de tableau.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Recrutement">
+        <div class="news-card__media"><div class="img-placeholder">Photo détection</div><span class="news-card__cat" style="background:#1B2F6E;color:#fff;">RECRUTEMENT</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">18 juin 2026</span>
+          <h3 class="news-card__title">Détections U13 : viens tester mardi 8 juillet</h3>
+          <p class="news-card__excerpt">Le club ouvre ses portes aux joueurs nés en 2013-2014. Rendez-vous à 18h au stade, crampons et envie suffisent.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Événements">
+        <div class="news-card__media"><div class="img-placeholder">Photo tournoi</div><span class="news-card__cat" style="background:#F2B705;color:#13224F;">ÉVÉNEMENTS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">10 juin 2026</span>
+          <h3 class="news-card__title">Tournoi des familles : une 12e édition réussie</h3>
+          <p class="news-card__excerpt">Plus de 300 personnes réunies autour des terrains pour une journée conviviale entre parents, enfants et bénévoles.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Résultats">
+        <div class="news-card__media"><div class="img-placeholder">Photo U15</div><span class="news-card__cat" style="background:#C0192C;color:#fff;">RÉSULTATS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">15 juin 2026</span>
+          <h3 class="news-card__title">Les U15 qualifiés pour les phases finales</h3>
+          <p class="news-card__excerpt">Une saison solide récompensée : les U15 de Samir Haddad disputeront le Final Four départemental fin juin.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Communiqués">
+        <div class="news-card__media"><div class="img-placeholder">Photo club-house</div><span class="news-card__cat" style="background:#0E1A3C;color:#fff;">COMMUNIQUÉS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">12 juin 2026</span>
+          <h3 class="news-card__title">Assemblée générale : rendez-vous le 28 juin</h3>
+          <p class="news-card__excerpt">Tous les licenciés et parents sont invités à l'AG annuelle, suivie d'un pot de fin de saison au club-house.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Recrutement">
+        <div class="news-card__media"><div class="img-placeholder">Photo entraînement</div><span class="news-card__cat" style="background:#1B2F6E;color:#fff;">RECRUTEMENT</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">5 juin 2026</span>
+          <h3 class="news-card__title">Le club recherche un éducateur U11 diplômé</h3>
+          <p class="news-card__excerpt">Tu as ton BMF ou un CFF et envie de t'investir auprès des jeunes ? Le pôle Préformation cherche un renfort.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Événements">
+        <div class="news-card__media"><div class="img-placeholder">Photo stage</div><span class="news-card__cat" style="background:#F2B705;color:#13224F;">ÉVÉNEMENTS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">1 juin 2026</span>
+          <h3 class="news-card__title">Stage multisports pendant les vacances d'été</h3>
+          <p class="news-card__excerpt">Du 7 au 11 juillet, stage football + activités pour les 6-13 ans. Places limitées, inscriptions ouvertes.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Résultats">
+        <div class="news-card__media"><div class="img-placeholder">Photo vétérans</div><span class="news-card__cat" style="background:#C0192C;color:#fff;">RÉSULTATS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">8 juin 2026</span>
+          <h3 class="news-card__title">Les Vétérans terminent 2e de leur poule</h3>
+          <p class="news-card__excerpt">Belle saison pour les Vétérans du dimanche, qui décrochent la 2e place et la montée pour l'an prochain.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+      <a href="#" class="news-card" data-cat="Communiqués">
+        <div class="news-card__media"><div class="img-placeholder">Photo permanence</div><span class="news-card__cat" style="background:#0E1A3C;color:#fff;">COMMUNIQUÉS</span></div>
+        <div class="news-card__body">
+          <span class="news-card__date">20 mai 2026</span>
+          <h3 class="news-card__title">Nouveaux horaires de la permanence</h3>
+          <p class="news-card__excerpt">À compter de juin, la permanence du club se tiendra le mercredi de 14h à 18h et le samedi de 9h à 12h.</p>
+          <span class="news-card__more">Lire l'article →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ GALERIE ============ -->
+  <section class="section--band">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">EN IMAGES</span>
+          <h2 class="section-title">Galerie par événement</h2>
+        </div>
+        <span class="section-head__meta">Glissez vos photos sur chaque vignette.</span>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="img-placeholder">Tournoi des familles</div><div class="gallery-item__cap"><span class="gallery-item__title">Tournoi des familles</span><span class="gallery-item__meta">Juin 2026 · 14 photos</span></div></div>
+        <div class="gallery-item"><div class="img-placeholder">R2 vs Ris-Orangis</div><div class="gallery-item__cap"><span class="gallery-item__title">R2 vs Ris-Orangis</span><span class="gallery-item__meta">Juin 2026 · 22 photos</span></div></div>
+        <div class="gallery-item"><div class="img-placeholder">Stage de Pâques U11</div><div class="gallery-item__cap"><span class="gallery-item__title">Stage de Pâques U11</span><span class="gallery-item__meta">Avril 2026 · 18 photos</span></div></div>
+        <div class="gallery-item"><div class="img-placeholder">Loto du club</div><div class="gallery-item__cap"><span class="gallery-item__title">Loto du club</span><span class="gallery-item__meta">Mars 2026 · 9 photos</span></div></div>
+        <div class="gallery-item"><div class="img-placeholder">Remise des équipements</div><div class="gallery-item__cap"><span class="gallery-item__title">Remise des équipements</span><span class="gallery-item__meta">Sept. 2025 · 27 photos</span></div></div>
+        <div class="gallery-item"><div class="img-placeholder">Plateau Baby Foot</div><div class="gallery-item__cap"><span class="gallery-item__title">Plateau Baby Foot</span><span class="gallery-item__meta">Nov. 2025 · 31 photos</span></div></div>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="footer-grid">

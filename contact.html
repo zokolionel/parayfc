@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact — Paray FC</title>
-  <meta name="description" content="Contactez le Paray FC : adresse, e-mail et horaires de permanence au club-house.">
+  <meta name="description" content="Contactez le Paray FC : adresse du stade, emails général/technique/équipement, plan d'accès et formulaire.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -49,21 +49,76 @@
     </div>
   </header>
 
+  <!-- ============ EN-TÊTE ============ -->
   <section class="page-hero">
     <div class="page-hero__inner">
-      <span class="eyebrow">ON VOUS RÉPOND</span>
-      <h1>Contact</h1>
-      <p>Une question sur les licences, les équipes ou un partenariat ? Écrivez-nous ou passez nous voir pendant les permanences au club-house.</p>
+      <span class="breadcrumb"><a href="index.html">Accueil</a> <span class="sep">/</span> <span class="current">Contact</span></span>
+      <h1>Contactez-nous</h1>
+      <p>Une question sur une inscription, un partenariat ou la vie du club ? Écrivez-nous ou passez nous voir pendant la permanence.</p>
     </div>
   </section>
 
-  <main class="page-body">
-    <div class="soon-card">
-      <h2>Nous contacter</h2>
-      <p>📍 1 rue de Kruft, 91550 Paray-Vieille-Poste<br>✉️ parayfootball@gmail.com<br>Permanence : mercredi 14h-18h et samedi 9h-12h au club-house.</p>
-      <a href="mailto:parayfootball@gmail.com" class="btn btn--primary">Envoyer un e-mail</a>
+  <!-- ============ COORDONNÉES + FORMULAIRE ============ -->
+  <section class="section">
+    <div class="split-grid">
+      <!-- Coordonnées -->
+      <div>
+        <span class="eyebrow">NOS COORDONNÉES</span>
+        <h2 class="section-title">Où nous trouver</h2>
+        <div class="info-list">
+          <div class="info-item">
+            <span class="info-item__icon" style="background:#C0192C;">📍</span>
+            <div><span class="info-item__label">ADRESSE</span><span class="info-item__value">Stade Paul Vaillant-Couturier — 1 rue de Kruft, 91550 Paray-Vieille-Poste</span></div>
+          </div>
+          <div class="info-item">
+            <span class="info-item__icon" style="background:#F2B705;">✉️</span>
+            <div><span class="info-item__label">EMAIL GÉNÉRAL</span><a href="mailto:parayfootball@gmail.com" class="info-item__value">parayfootball@gmail.com</a><span class="info-item__desc">Questions générales, inscriptions et vie du club.</span></div>
+          </div>
+          <div class="info-item">
+            <span class="info-item__icon" style="background:#1B2F6E;">✉️</span>
+            <div><span class="info-item__label">EMAIL TECHNIQUE</span><a href="mailto:technique.parayfc@gmail.com" class="info-item__value">technique.parayfc@gmail.com</a><span class="info-item__desc">Tout dysfonctionnement terrain & organisation.</span></div>
+          </div>
+          <div class="info-item">
+            <span class="info-item__icon" style="background:#0E1A3C;">✉️</span>
+            <div><span class="info-item__label">EMAIL ÉQUIPEMENT</span><a href="mailto:equipement.parayfc@gmail.com" class="info-item__value">equipement.parayfc@gmail.com</a><span class="info-item__desc">Commandes de matériel et équipements du club.</span></div>
+          </div>
+          <div class="info-item">
+            <span class="info-item__icon" style="background:#5B647E;">🕑</span>
+            <div><span class="info-item__label">PERMANENCE</span><span class="info-item__value">Mercredi 14h-18h · Samedi 9h-12h au club-house</span></div>
+          </div>
+        </div>
+        <!-- Carte Google Maps -->
+        <div class="map-frame">
+          <iframe title="Plan d'accès Paray FC" src="https://www.google.com/maps?q=1%20rue%20de%20Kruft,%2091550%20Paray-Vieille-Poste&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="form-card">
+        <div class="form-success" data-form-success hidden>
+          <span class="form-success__icon">✓</span>
+          <h3>Message envoyé !</h3>
+          <p>Merci, nous vous répondrons dans les meilleurs délais.</p>
+        </div>
+        <!-- Pour un envoi réel : ajoutez action="https://formspree.io/f/VOTRE_ID" method="POST" et retirez data-demo-form -->
+        <form data-demo-form>
+          <h3>Écrivez-nous</h3>
+          <label class="field block" style="margin-top:0;">Nom complet<input name="nom" required placeholder="Votre nom"></label>
+          <label class="field block">Email<input name="email" type="email" required placeholder="vous@email.fr"></label>
+          <label class="field block">Votre demande concerne
+            <select name="destinataire">
+              <option>Question générale / inscription</option>
+              <option>Technique — terrain & organisation</option>
+              <option>Équipement & matériel</option>
+            </select>
+          </label>
+          <label class="field block">Message<textarea name="message" rows="5" required placeholder="Votre message..."></textarea></label>
+          <button type="submit" class="form-submit">Envoyer le message →</button>
+          <p class="form-note">Votre message est dirigé vers le bon interlocuteur selon l'objet choisi.</p>
+        </form>
+      </div>
     </div>
-  </main>
+  </section>
 
   <footer class="site-footer">
     <div class="footer-grid">

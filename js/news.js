@@ -60,6 +60,8 @@
     if (!grid) return;
     var active = list.filter(isActive).sort(byDateDesc);
     if (!active.length) return;
+    var emptyMsg = document.getElementById('news-empty-home');
+    if (emptyMsg) emptyMsg.hidden = true;
     grid.prepend(firstChildFrom(cardHTML(active[0], true)));
   }
 

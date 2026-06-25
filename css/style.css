@@ -650,3 +650,4 @@ a.info-item__value:hover { color: var(--red); }
 .result-card--na { border-left-color: #CBD2E0; }
 
 .news-card--featured { outline: 2px solid var(--accent); outline-offset: -1px; }
+.news-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

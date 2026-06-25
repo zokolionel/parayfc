@@ -99,8 +99,11 @@
     var card = document.createElement('a');
     card.className = 'news-card news-card--featured';
     card.href = 'actualites.html';
+    var media = n.image
+      ? '<img class="news-card__img" src="' + esc(n.image) + '" alt="">'
+      : '<div class="img-placeholder">À la une</div>';
     card.innerHTML =
-      '<div class="news-card__media"><div class="img-placeholder">À la une</div>' +
+      '<div class="news-card__media">' + media +
       '<span class="news-card__cat" style="background:' + c.bg + ';color:' + c.fg + ';">' + esc(String(n.category).toUpperCase()) + '</span></div>' +
       '<div class="news-card__body">' +
       '<span class="news-card__date">' + esc(dateStr) + '</span>' +

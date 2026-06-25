@@ -60,6 +60,9 @@
     .btn-save:hover{ transform:translateY(-1px); }
     .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     .counter{ font-size:12px; color:var(--muted); text-align:right; margin-top:6px; }
+    input[type=file].in{ padding:9px 10px; }
+    .news-preview{ margin-top:10px; }
+    .news-preview img{ max-width:100%; max-height:180px; border-radius:10px; border:1px solid var(--line); display:block; }
 
     /* ---------- Tableaux responsive (cartes sur mobile) ---------- */
     @media (max-width:720px){
@@ -153,6 +156,11 @@
           <label class="lbl" for="news-text">Texte court</label>
           <textarea class="in" id="news-text" rows="4" maxlength="300" placeholder="Quelques phrases..."></textarea>
           <div class="counter"><span id="news-count">0</span>/300</div>
+        </div>
+        <div style="margin-top:14px;">
+          <label class="lbl" for="news-photo">Photo (optionnel)</label>
+          <input class="in" type="file" id="news-photo" accept="image/*">
+          <div class="news-preview" id="news-preview" hidden><img id="news-preview-img" alt="Aperçu de la photo"></div>
         </div>
         <button class="btn-save" id="news-save" type="button">💾 Publier l'actu</button>
       </section>

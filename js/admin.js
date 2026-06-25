@@ -9,6 +9,7 @@
   var PASSWORD = 'admin2026';
   var VENUES = ['Domicile', 'Extérieur'];
   var OUTCOMES = ['Victoire', 'Nul', 'Défaite', 'N/A'];
+  var newsImage = '', newsFile = null;
 
   function $(id) { return document.getElementById(id); }
 
@@ -156,6 +157,8 @@
         $('news-title').value = news.title || '';
         $('news-cat').value = news.category || 'Résultats';
         $('news-text').value = news.text || '';
+        newsImage = news.image || '';
+        if (newsImage) { $('news-preview-img').src = newsImage; $('news-preview').hidden = false; }
       }
       updateCount();
     }).catch(function () {
@@ -189,15 +192,45 @@
     $('res-save').addEventListener('click', function () {
       save(this, 'results', { results: collectRes() }, '✓ Résultats enregistrés');
     });
+    $('news-photo').addEventListener('change', function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      newsFile = f;
+      $('news-preview-img').src = URL.createObjectURL(f);
+      $('news-preview').hidden = false;
+    });
+
     $('news-save').addEventListener('click', function () {
+      var btn = this;
       var title = $('news-title').value.trim();
       if (!title) { toast('Ajoutez un titre', true); return; }
-      save(this, 'news', {
-        title: title,
-        category: $('news-cat').value,
-        text: $('news-text').value.trim(),
-        date: new Date().toISOString()
-      }, '✓ Actualité publiée');
+      btn.disabled = true;
+
+      var build = function (imageUrl) {
+        return {
+          title: title,
+          category: $('news-cat').value,
+          text: $('news-text').value.trim(),
+          image: imageUrl || '',
+          date: new Date().toISOString()
+        };
+      };
+      var go = function (imageUrl) {
+        Store.set('news', build(imageUrl)).then(function () {
+          newsImage = imageUrl || ''; newsFile = null;
+          toast('✓ Actualité publiée');
+        }).catch(function () {
+          toast("Erreur d'enregistrement", true);
+        }).then(function () { btn.disabled = false; });
+      };
+
+      if (newsFile) {
+        toast('Envoi de la photo…');
+        Store.uploadImage(newsFile).then(function (url) { go(url); })
+          .catch(function () { toast("Échec de l'envoi de la photo", true); btn.disabled = false; });
+      } else {
+        go(newsImage);
+      }
     });
 
     $('news-text').addEventListener('input', updateCount);

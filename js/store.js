@@ -4,11 +4,18 @@
      (partagé entre tous les visiteurs).
    - Sinon → repli automatique sur localStorage (propre au navigateur).
 
-   API : Store.getAll() · Store.get(key) · Store.set(key, data)
+   API :
+     Store.getAll()           -> { program, results, news }
+     Store.get(key)
+     Store.set(key, data)     -> upsert
+     Store.uploadImage(file)  -> Promise<url publique> (Supabase Storage)
+                                 (repli : data URL base64 en local)
    Clés logiques : 'program' · 'results' · 'news'
    =================================================================== */
 (function () {
   'use strict';
+
+  var BUCKET = 'photos';
 
   function backend() {
     var b = (typeof CONFIG !== 'undefined') ? CONFIG.backend : null;
@@ -22,7 +29,6 @@
   function lsSet(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
 
   var Store = {
-    /* Renvoie un objet { program, results, news } */
     getAll: function () {
       var b = backend();
       if (b) {
@@ -45,7 +51,6 @@
       return this.getAll().then(function (all) { return all[key] || null; });
     },
 
-    /* Enregistre data sous la clé (upsert) */
     set: function (key, data) {
       var b = backend();
       if (b) {
@@ -60,6 +65,35 @@
       }
       lsSet('pfc_' + key, data);
       return Promise.resolve(true);
+    },
+
+    /* Upload d'une image -> renvoie l'URL publique */
+    uploadImage: function (file) {
+      var b = backend();
+      if (b) {
+        var safe = (file.name || 'photo').replace(/[^a-zA-Z0-9._-]/g, '_');
+        var path = 'news-' + Date.now() + '-' + safe;
+        return fetch(b.supabaseUrl + '/storage/v1/object/' + BUCKET + '/' + path, {
+          method: 'POST',
+          headers: {
+            'apikey': b.supabaseKey,
+            'Authorization': 'Bearer ' + b.supabaseKey,
+            'Content-Type': file.type || 'application/octet-stream',
+            'x-upsert': 'true'
+          },
+          body: file
+        }).then(function (res) {
+          if (!res.ok) return res.text().then(function (t) { throw new Error('upload ' + res.status + ' ' + t); });
+          return b.supabaseUrl + '/storage/v1/object/public/' + BUCKET + '/' + path;
+        });
+      }
+      /* Repli local : image encodée en base64 (data URL) */
+      return new Promise(function (resolve, reject) {
+        var fr = new FileReader();
+        fr.onload = function () { resolve(fr.result); };
+        fr.onerror = reject;
+        fr.readAsDataURL(file);
+      });
     }
   };
 

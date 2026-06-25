@@ -17,10 +17,10 @@
   <header class="site-header">
     <nav class="nav">
       <a href="index.html#accueil" class="nav__logo">
-        <img src="images/logo-paray.webp" alt="Logo Paray FC" class="logo-img">
+        <img src="images/logo-paray.webp" data-config-src="logoUrl" alt="Logo Paray FC" class="logo-img">
         <span class="logo-text">
-          <span class="logo-name">Paray FC</span>
-          <span class="logo-since">DEPUIS 1947</span>
+          <span class="logo-name" data-config="clubName">Paray FC</span>
+          <span class="logo-since" data-config="since">DEPUIS 1947</span>
         </span>
       </a>
 
@@ -68,7 +68,7 @@
     <div class="hero__content">
       <span class="badge">⚽ CLUB FAMILIAL · ESSONNE (91)</span>
       <h1 class="hero__title">Le football au cœur de Paray</h1>
-      <p class="hero__text">Depuis 1947, le Paray Football Club fait grandir les joueuses et joueurs de Paray-Vieille-Poste, du Baby Foot aux Vétérans.</p>
+      <p class="hero__text">Depuis <span data-config="foundedYear">1947</span>, le <span data-config="clubName">Paray FC</span> fait grandir les joueuses et joueurs de <span data-config="city">Paray-Vieille-Poste</span>, du Baby Foot aux Vétérans.</p>
       <div class="hero__actions">
         <a href="rejoindre.html" class="btn btn--primary">Nous rejoindre →</a>
         <a href="partenaires.html" class="btn btn--ghost">Devenir partenaire</a>
@@ -86,7 +86,7 @@
       <div class="match-info">
         <div>
           <div class="match-meta">DIM. 6 JUILLET · 15H00 · RÉGIONALE 2</div>
-          <div class="match-teams">Paray FC <span class="vs">vs</span> US Ris-Orangis</div>
+          <div class="match-teams"><span data-config="clubName">Paray FC</span> <span class="vs">vs</span> US Ris-Orangis</div>
         </div>
         <span class="match-place">📍 Stade Paul Vaillant-Couturier</span>
       </div>
@@ -98,22 +98,22 @@
   <section class="stats">
     <div class="stats__grid">
       <div class="stat">
-        <span class="stat__value">524</span>
+        <span class="stat__value" data-config="memberCount">524</span>
         <span class="stat__label">Licenciés</span>
         <span class="stat__sub">Saison 2025-2026</span>
       </div>
       <div class="stat">
-        <span class="stat__value">31</span>
+        <span class="stat__value" data-config="teamCount">31</span>
         <span class="stat__label">Équipes</span>
         <span class="stat__sub">Baby → Vétérans</span>
       </div>
       <div class="stat">
         <span class="stat__value">R2</span>
-        <span class="stat__label">Régionale 2</span>
+        <span class="stat__label" data-config="flagshipTeam.level">Régionale 2</span>
         <span class="stat__sub">Équipe fanion</span>
       </div>
       <div class="stat">
-        <span class="stat__value">1947</span>
+        <span class="stat__value" data-config="foundedYear">1947</span>
         <span class="stat__label">Année de création</span>
         <span class="stat__sub">Près de 80 ans</span>
       </div>
@@ -177,7 +177,7 @@
   <section id="equipes" class="section--band">
     <div class="section">
       <div class="section-center">
-        <span class="eyebrow">31 ÉQUIPES · DU BABY AUX VÉTÉRANS</span>
+        <span class="eyebrow"><span data-config="teamCount">31</span> ÉQUIPES · DU BABY AUX VÉTÉRANS</span>
         <h2 class="section-title">Nos équipes par pôle</h2>
         <p>Chaque catégorie progresse dans un cadre adapté à son âge, encadrée par des éducateurs diplômés.</p>
       </div>
@@ -295,7 +295,7 @@
       <div id="rejoindre" class="cta-card cta-card--join">
         <div class="cta-card__deco cta-card__deco--gold"></div>
         <span class="eyebrow eyebrow--gold">FUTURS LICENCIÉS</span>
-        <h3>Rejoignez le Paray FC</h3>
+        <h3>Rejoignez le <span data-config="clubName">Paray FC</span></h3>
         <p>Inscriptions ouvertes pour la saison 2026-2027, de 4 ans aux Vétérans. Essai gratuit possible.</p>
         <a href="rejoindre.html" class="cta-card__btn cta-card__btn--red">S'inscrire →</a>
       </div>
@@ -304,7 +304,7 @@
         <div class="cta-card__deco cta-card__deco--red"></div>
         <span class="eyebrow">ENTREPRISES & COMMERCES</span>
         <h3>Devenez partenaire</h3>
-        <p>Associez votre image à un club de 524 licenciés ancré dans la vie locale depuis près de 80 ans.</p>
+        <p>Associez votre image à un club de <span data-config="memberCount">524</span> licenciés ancré dans la vie locale depuis près de 80 ans.</p>
         <a href="partenaires.html" class="cta-card__btn cta-card__btn--navy">Recevoir la plaquette →</a>
       </div>
     </div>
@@ -316,14 +316,14 @@
       <!-- Colonne club -->
       <div class="footer-club">
         <div class="footer-club__top">
-          <img src="images/logo-paray.webp" alt="Logo Paray FC" class="footer-club__logo">
-          <span class="footer-club__name">Paray FC</span>
+          <img src="images/logo-paray.webp" data-config-src="logoUrl" alt="Logo Paray FC" class="footer-club__logo">
+          <span class="footer-club__name" data-config="clubName">Paray FC</span>
         </div>
-        <p class="footer-club__text">Le club de football de Paray-Vieille-Poste depuis 1947. 524 licenciés, 31 équipes, une même passion.</p>
+        <p class="footer-club__text" data-config="aboutText">Le club de football de Paray-Vieille-Poste depuis 1947. 524 licenciés, 31 équipes, une même passion.</p>
         <div class="social">
-          <a href="#" aria-label="Facebook" class="social__link">f</a>
-          <a href="#" aria-label="Instagram" class="social__link">IG</a>
-          <a href="#" aria-label="WhatsApp" class="social__link">WA</a>
+          <a href="#" data-config-href="social.facebook" aria-label="Facebook" class="social__link">f</a>
+          <a href="#" data-config-href="social.instagram" aria-label="Instagram" class="social__link">IG</a>
+          <a href="#" data-config-href="social.tiktok" aria-label="TikTok" class="social__link">TT</a>
         </div>
       </div>
       <!-- Liens rapides -->
@@ -341,24 +341,26 @@
       <!-- Contact -->
       <div class="footer-col">
         <h4 class="footer-col__title">Contact</h4>
-        <p class="footer-contact">📍 1 rue de Kruft<br>91550 Paray-Vieille-Poste</p>
-        <p class="footer-contact" style="margin-top:12px;">✉️ <a href="mailto:parayfootball@gmail.com">parayfootball@gmail.com</a></p>
+        <p class="footer-contact">📍 <span data-config-html="addressHtml">1 rue de Kruft<br>91550 Paray-Vieille-Poste</span></p>
+        <p class="footer-contact" data-config-show="phone" hidden>📞 <a data-config="phone" data-config-href="telHref" href="#"></a></p>
+        <p class="footer-contact" style="margin-top:12px;">✉️ <a href="mailto:parayfootball@gmail.com" data-config="email" data-config-href="emailHref">parayfootball@gmail.com</a></p>
         <p class="footer-contact--muted">Permanence : mercredi 14h-18h<br>et samedi 9h-12h au club-house</p>
       </div>
       <!-- Boutique -->
       <div class="footer-col footer-shop">
         <h4 class="footer-col__title">Boutique officielle</h4>
         <p>Maillots, survêtements et accessoires aux couleurs du club.</p>
-        <a href="boutique.html" class="footer-shop__btn">Voir la boutique →</a>
+        <a href="boutique.html" data-config-href="shopUrl" class="footer-shop__btn">Voir la boutique →</a>
       </div>
     </div>
     <!-- Bas de footer -->
     <div class="footer-bottom">
-      <span>© 2026 Paray Football Club · Affilié à la FFF</span>
+      <span>© 2026 <span data-config="clubName">Paray Football Club</span> · Affilié à la FFF</span>
       <span>Mentions légales · Politique de confidentialité</span>
     </div>
   </footer>
 
+  <script src="js/config.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

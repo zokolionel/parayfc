@@ -4,12 +4,18 @@
    =================================================================== */
 
 :root {
-  --navy:        #13224F;
+  /* Couleurs pilotées par js/config.js (CONFIG.colors).
+     Modifiez-les dans config.js, pas ici. */
+  --primary:     #13224F;
+  --secondary:   #C0192C;
+  --accent:      #F2B705;
+
+  --navy:        var(--primary);
   --navy-dark:   #0E1A3C;
   --navy-text:   #1B2F6E;
   --bg:          #F4F5F9;
-  --red:         #C0192C;
-  --gold:        #F2B705;
+  --red:         var(--secondary);
+  --gold:        var(--accent);
   --white:       #ffffff;
   --grey-text:   #5B647E;
   --grey-soft:   #9AA6C8;

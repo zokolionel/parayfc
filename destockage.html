@@ -9,6 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .destock-backbar { background:#fff; border-bottom:1px solid var(--border); }
+    .destock-backbar__inner { max-width:var(--maxw); margin:0 auto; padding:12px clamp(20px,5vw,40px); display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center; justify-content:space-between; }
+    .destock-backbar .breadcrumb a { color:var(--grey-text); }
+    .destock-backbar .breadcrumb a:hover { color:var(--secondary); }
+    .destock-backbar .breadcrumb { color:var(--grey-text); font-size:13px; font-weight:600; }
+    .destock-backbar .breadcrumb .current { color:var(--navy); }
+    .destock-frame { width:100%; border:0; display:block; min-height:80vh; background:#101331; }
+  </style>
 </head>
 <body>
 
@@ -49,201 +58,16 @@
     </div>
   </header>
 
-  <!-- ============ BANDEAU STOCK LIMITÉ ============ -->
-  <div class="destock-alert">
-    Stock limité · Pour commander : <a href="mailto:equipementparayfootclub@gmail.com">equipementparayfootclub@gmail.com</a>
+  <!-- ============ FIL D'ARIANE + RETOUR ============ -->
+  <div class="destock-backbar">
+    <div class="destock-backbar__inner">
+      <span class="breadcrumb"><a href="index.html">Accueil</a> <span class="sep">/</span> <a href="boutique.html">Boutique</a> <span class="sep">/</span> <span class="current">Déstockage</span></span>
+      <a href="boutique.html" class="btn btn--navy" style="padding:9px 18px;font-size:13px;">← Retour à la boutique</a>
+    </div>
   </div>
 
-  <!-- ============ EN-TÊTE ============ -->
-  <section class="page-hero">
-    <div class="page-hero__inner">
-      <span class="breadcrumb"><a href="index.html">Accueil</a> <span class="sep">/</span> <a href="boutique.html">Boutique</a> <span class="sep">/</span> <span class="current">Déstockage</span></span>
-      <h1>Déstockage — Ancienne collection</h1>
-      <p>Tailles limitées · Contact : <a href="mailto:equipementparayfootclub@gmail.com" style="color:var(--gold);font-weight:700;">equipementparayfootclub@gmail.com</a></p>
-    </div>
-  </section>
-
-  <!-- ============ CATALOGUE DÉSTOCKAGE ============ -->
-  <section class="section">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">BONNES AFFAIRES</span>
-        <h2 class="section-title">Le catalogue déstockage</h2>
-      </div>
-      <span class="section-head__meta">16 articles · prix réduits, dans la limite des stocks et tailles disponibles</span>
-    </div>
-    <div class="destock-grid">
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Survêtements</span><img src="images/destockage/surv-alvor.jpg" alt="Survêtement Alvor — Noir / bleu" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Survêtement Alvor</h3>
-          <p class="destock-card__note">Noir / bleu</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, 14 ans, S, M, L, XL, 2XL, 3XL</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Survêtements</span><img src="images/destockage/surv-faro.jpg" alt="Survêtement Faro — Noir / rouge" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Survêtement Faro</h3>
-          <p class="destock-card__note">Noir / rouge</p>
-          <p class="destock-card__sizes">14 ans, S, M, L, XL</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Survêtements</span><img src="images/destockage/surv-liga.jpg" alt="Survêtement Liga — Bleu marine" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Survêtement Liga</h3>
-          <p class="destock-card__note">Bleu marine</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, 14 ans, S, M</p>
-          <span class="destock-card__price">35 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Trainings</span><img src="images/destockage/train-liga.jpg" alt="Training Liga — Bleu roi" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Training Liga</h3>
-          <p class="destock-card__note">Bleu roi</p>
-          <p class="destock-card__sizes">S, M, L</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Trainings</span><img src="images/destockage/train-mad-cyan.jpg" alt="Training Madeiras — Marine / cyan" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Training Madeiras</h3>
-          <p class="destock-card__note">Marine / cyan</p>
-          <p class="destock-card__sizes">8 ans, 10 ans, 14 ans, S</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Trainings</span><img src="images/destockage/train-mad-jaune.jpg" alt="Training Madeiras — Marine / jaune" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Training Madeiras</h3>
-          <p class="destock-card__note">Marine / jaune</p>
-          <p class="destock-card__sizes">6 ans, 10 ans, 12 ans, 14 ans, S, M</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Coupe-vent</span><img src="images/destockage/kway-gaia.jpg" alt="Kway Gaïa — Marine" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Kway Gaïa</h3>
-          <p class="destock-card__note">Marine</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, S, L</p>
-          <span class="destock-card__price">10 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Coupe-vent</span><img src="images/destockage/kway-alvor.jpg" alt="Kway Alvor — Bleu" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Kway Alvor</h3>
-          <p class="destock-card__note">Bleu</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, S, M, L, XL, 3XL</p>
-          <span class="destock-card__price">15 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Coupe-vent</span><img src="images/destockage/kway-mad.jpg" alt="Kway Madeiras — Marine / gris" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Kway Madeiras</h3>
-          <p class="destock-card__note">Marine / gris</p>
-          <p class="destock-card__sizes">10 ans, S</p>
-          <span class="destock-card__price">15 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Doudounes</span><img src="images/destockage/doud-liga.jpg" alt="Doudoune Liga — Marine, parka" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Doudoune Liga</h3>
-          <p class="destock-card__note">Marine · parka</p>
-          <p class="destock-card__sizes">6 ans, 12 ans, 14 ans, S, M</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Doudounes</span><img src="images/destockage/doud-tech.jpg" alt="Doudoune Tech — Marine" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Doudoune Tech</h3>
-          <p class="destock-card__note">Marine</p>
-          <p class="destock-card__sizes">M, 2XL</p>
-          <span class="destock-card__price">50 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Doudounes</span><img src="images/destockage/doud-tavira.jpg" alt="Doudoune Tavira — Rouge / noir" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Doudoune Tavira</h3>
-          <p class="destock-card__note">Rouge / noir</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, M, L, XL</p>
-          <span class="destock-card__price">30 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Hauts</span><img src="images/destockage/polaire.jpg" alt="Polaire — Marine" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Polaire</h3>
-          <p class="destock-card__note">Marine</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, XS, S, M</p>
-          <span class="destock-card__price">25 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Hauts</span><img src="images/destockage/sweat-liga.jpg" alt="Sweat Liga — Marine" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Sweat Liga</h3>
-          <p class="destock-card__note">Marine</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, 14 ans, S, M, L, XL</p>
-          <span class="destock-card__price">15 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Hauts</span><img src="images/destockage/polo-alvor.jpg" alt="Polo Alvor — Marine / bleu" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Polo Alvor</h3>
-          <p class="destock-card__note">Marine / bleu</p>
-          <p class="destock-card__sizes">6 ans, 8 ans, 10 ans, 12 ans, 14 ans, S, M, L</p>
-          <span class="destock-card__price">10 €</span>
-        </div>
-      </article>
-
-      <article class="destock-card">
-        <div class="destock-card__media"><span class="destock-card__cat">Accessoires</span><img src="images/destockage/chaussettes.jpg" alt="Chaussettes — Marine" loading="lazy"></div>
-        <div class="destock-card__body">
-          <h3 class="destock-card__name">Chaussettes</h3>
-          <p class="destock-card__note">Marine</p>
-          <p class="destock-card__sizes">Taille unique</p>
-          <span class="destock-card__price">5 €</span>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="cta-band" style="margin-top:clamp(32px,5vw,48px);">
-      <div class="cta-band__deco"></div>
-      <span class="eyebrow">COMMANDE PAR EMAIL</span>
-      <h3>Une pièce vous intéresse ?</h3>
-      <p>Indiquez l'article, la couleur et la taille souhaitée par email — réponse selon les stocks disponibles.</p>
-      <a href="mailto:equipementparayfootclub@gmail.com" class="btn btn--primary">Envoyer un email pour commander</a>
-    </div>
-  </section>
+  <!-- ============ CATALOGUE DÉSTOCKAGE (page d'origine, intacte) ============ -->
+  <iframe id="destock-frame" class="destock-frame" src="destockage-catalogue.html" title="Catalogue déstockage Paray FC"></iframe>
 
   <footer class="site-footer">
     <div class="footer-grid">
@@ -288,6 +112,38 @@
       <span>Mentions légales · Politique de confidentialité</span>
     </div>
   </footer>
+
+  <script>
+    // Ajuste automatiquement la hauteur du cadre au contenu de la page déstockage
+    // (même origine → accès autorisé). Le bundle se "déballe" en JS, donc on
+    // re-mesure plusieurs fois après le chargement.
+    (function () {
+      var f = document.getElementById('destock-frame');
+      function fit() {
+        try {
+          var d = f.contentDocument || (f.contentWindow && f.contentWindow.document);
+          if (d && d.documentElement) {
+            var h = Math.max(
+              d.body ? d.body.scrollHeight : 0,
+              d.documentElement.scrollHeight || 0
+            );
+            if (h > 80) f.style.height = h + 'px';
+          }
+        } catch (e) { /* cross-origin improbable ici */ }
+      }
+      f.addEventListener('load', function () {
+        fit();
+        var n = 0, iv = setInterval(function () { fit(); if (++n > 30) clearInterval(iv); }, 350);
+        try {
+          var d = f.contentDocument;
+          if (window.ResizeObserver && d && d.documentElement) {
+            new ResizeObserver(fit).observe(d.documentElement);
+          }
+        } catch (e) {}
+      });
+      window.addEventListener('resize', fit);
+    })();
+  </script>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>

@@ -329,6 +329,7 @@ img { display: block; max-width: 100%; }
 .footer-club__text { font-size: 14px; line-height: 1.65; margin-top: 16px; max-width: 30ch; color: var(--grey-soft); }
 .social { display: flex; gap: 10px; margin-top: 18px; }
 .social__link { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 9px; background: rgba(255,255,255,.07); font-weight: 800; font-size: 14px; color: var(--white); transition: background .15s; }
+.social__link svg { width: 18px; height: 18px; fill: currentColor; display: block; }
 .social__link:hover { background: var(--red); }
 .footer-col__title { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
 .footer-link { display: block; font-size: 14px; color: #C9D0E4; padding: 7px 0; transition: color .15s; }
